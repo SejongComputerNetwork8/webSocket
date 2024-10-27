@@ -11,21 +11,24 @@ import java.net.Socket;
 public class GmailSender {
     private BufferedReader inFromServer;
     private DataOutputStream outToServer;
+    private String gmailId;
+    private String gmailAppPassword;
+    private String receivedEmail;
+    private String message;
+    public GmailSender(String id,String password){
+        this.gmailId=id;
+        this.gmailAppPassword=password;
+    }
 
-    public void sendEmail() throws IOException {
+    public void sendEmail(String receivedEmail,String message) throws IOException {
+        setReceivendEmailAndMessage(receivedEmail, message);
         // 일반 소켓을 사용해 Gmail SMTP 서버에 연결 (포트 587)
         Socket clientSocket = new Socket("smtp.gmail.com", 587);
         SSLSocket sslSocket = getTLSSocket(clientSocket);
-        // 서버와 데이터를 주고받기 위한 입출력 스트림 설정
-        inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-        outToServer = new DataOutputStream(clientSocket.getOutputStream());
-        getInitialResponse(inFromServer);
+        getInitialResponse(inFromServer,clientSocket);
         isConnectionWithServer();
         // STARTTLS 명령어 전송 (암호화된 통신 시작)
-        outToServer.writeBytes("STARTTLS\r\n");
-        String response = inFromServer.readLine();
-        System.out.println("Sent: STARTTLS");
-        System.out.println("Received: " + response);
+        startTLSConnection();
         // 서버와 데이터를 주고받기 위한 새로운 TLS 스트림 설정
         setTLSStream(sslSocket);
         //서버와 연결 상태 확인
@@ -39,6 +42,10 @@ public class GmailSender {
     }
 
 
+    private void setReceivendEmailAndMessage(String receivedEmail, String message) {
+        this.receivedEmail= receivedEmail;
+        this.message= message;
+    }
 
 
     private SSLSocket getTLSSocket(Socket clientSocket) throws IOException {
@@ -48,7 +55,10 @@ public class GmailSender {
         return (SSLSocket) sslSocketFactory.createSocket(clientSocket, "smtp.gmail.com", 587, true);
     }
 
-    private void getInitialResponse(BufferedReader inFromServer) throws IOException {
+    private void getInitialResponse(BufferedReader inFromServer,Socket clientSocket) throws IOException {
+        // 서버와 데이터를 주고받기 위한 입출력 스트림 설정
+        inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+        outToServer = new DataOutputStream(clientSocket.getOutputStream());
         // 서버 초기 응답 읽기
         String response = inFromServer.readLine();
         System.out.println("Received: " + response);
@@ -59,6 +69,12 @@ public class GmailSender {
         outToServer.writeBytes("HELO example.com\r\n");
         response = inFromServer.readLine();
         System.out.println("Sent: HELO example.com");
+        System.out.println("Received: " + response);
+    }
+    private void startTLSConnection() throws IOException {
+        outToServer.writeBytes("STARTTLS\r\n");
+        String response = inFromServer.readLine();
+        System.out.println("Sent: STARTTLS");
         System.out.println("Received: " + response);
     }
     private void setTLSStream(SSLSocket sslSocket) throws IOException {
@@ -74,7 +90,7 @@ public class GmailSender {
         System.out.println("Received: " + response);
 
         // Base64로 인코딩된 사용자 이름 전송
-        String base64EncodedUsername = java.util.Base64.getEncoder().encodeToString("mhg10181018@gmail.com".getBytes());
+        String base64EncodedUsername = java.util.Base64.getEncoder().encodeToString(gmailId.getBytes());
         outToServer.writeBytes(base64EncodedUsername + "\r\n");
         response = inFromServer.readLine();
         System.out.println("Sent: " + base64EncodedUsername);
@@ -82,7 +98,7 @@ public class GmailSender {
 
         // Gmail 서버에서 334 응답으로 비밀번호를 요청할 때 Base64로 인코딩된 비밀번호 전송
 
-        String base64EncodedPassword = java.util.Base64.getEncoder().encodeToString("dkgoanypxohpizoi".getBytes());
+        String base64EncodedPassword = java.util.Base64.getEncoder().encodeToString(gmailAppPassword.getBytes());
         outToServer.writeBytes(base64EncodedPassword + "\r\n");
         response = inFromServer.readLine();
         System.out.println("Sent: " + base64EncodedPassword);
@@ -92,14 +108,14 @@ public class GmailSender {
         String response;
         // 이메일 전송 준비
         //MAIL FROM을 통해서 어디서 보내는 지를 나타냄
-        outToServer.writeBytes("MAIL FROM:<mhg10181018@gmail.com>\r\n");
+        outToServer.writeBytes("MAIL FROM:<"+gmailId+">\r\n");
         response = inFromServer.readLine();
         System.out.println("Sent: MAIL FROM:<mhg10181018@gmail.com>");
         System.out.println("Received: " + response);
         //RCPT TO를 통해서 어디서 보내는 지를 나타냄
-        outToServer.writeBytes("RCPT TO:<msw0909@naver.com>\r\n");
+        outToServer.writeBytes("RCPT TO:<"+receivedEmail+">\r\n");
         response = inFromServer.readLine();
-        System.out.println("Sent: RCPT TO:<msw0909@naver.com>");
+        System.out.println("Sent: RCPT TO:<"+receivedEmail+">");
         System.out.println("Received: " + response);
         //이제 data가 간다는 것을 알리는 부분
         outToServer.writeBytes("DATA\r\n");
@@ -111,15 +127,14 @@ public class GmailSender {
     private void sendEmailData() throws IOException {
         String response;
         outToServer.writeBytes("Subject: Test Email\r\n");
-        outToServer.writeBytes("To: msw0909@naver.com\r\n");
-        outToServer.writeBytes("From: mhg10181018@gmail.com\r\n");
+        outToServer.writeBytes("To: "+receivedEmail+"\r\n");
+        outToServer.writeBytes("From: "+gmailId+"\r\n");
         outToServer.writeBytes("\r\n");  // 헤더와 본문을 구분하는 빈 줄
-        outToServer.writeBytes("This is a test email2.\r\n.\r\n");
+        outToServer.writeBytes(message+".\r\n.\r\n");
         response = inFromServer.readLine();
         System.out.println("Sent: Email Body");
         System.out.println("Received: " + response);
     }
-
     private void quitWebSocket(SSLSocket sslSocket) throws IOException {
         String response;
         // QUIT 명령어 전송 및 연결 종료
@@ -127,7 +142,6 @@ public class GmailSender {
         response = inFromServer.readLine();
         System.out.println("Sent: QUIT");
         System.out.println("Received: " + response);
-
         // 소켓 닫기
         sslSocket.close();
     }

@@ -5,16 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="78fe774d-7d29-490e-9118-4e1acb8e42e6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/webSocket.webSocket.main~1.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webSocket/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/webSocket/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webSocket/src/main/java/computerNetwork/WebSocketApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/webSocket/src/main/java/computerNetwork/WebSocketApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webSocket/src/main/java/computerNetwork/ui/ui.java" beforeDir="false" afterPath="$PROJECT_DIR$/webSocket/src/main/java/computerNetwork/webSocket/ui/ui.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webSocket/src/main/java/computerNetwork/webSocket/WebSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/webSocket/src/main/java/computerNetwork/webSocket/gmail/GmailSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webSocket/src/main/java/computerNetwork/webSocket/gmail/GmailSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/webSocket/src/main/java/computerNetwork/webSocket/gmail/GmailSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webSocket/src/main/java/computerNetwork/webSocket/ui/ui.java" beforeDir="false" afterPath="$PROJECT_DIR$/webSocket/src/main/java/computerNetwork/webSocket/ui/UI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +104,7 @@
       <option name="presentableId" value="Default" />
       <updated>1729928777838</updated>
       <workItem from="1729928780310" duration="1119000" />
-      <workItem from="1730004919494" duration="976000" />
+      <workItem from="1730004919494" duration="3011000" />
     </task>
     <servers />
   </component>
