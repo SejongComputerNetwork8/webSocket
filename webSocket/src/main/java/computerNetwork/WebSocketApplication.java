@@ -1,16 +1,18 @@
 package computerNetwork;
 
 
-import computerNetwork.webSocket.WebSocket;
+import computerNetwork.webSocket.gmail.GmailFetcher;
+import computerNetwork.webSocket.gmail.GmailSender;
 
 import java.io.IOException;
 
 public class WebSocketApplication {
-	public static WebSocket webSocket;
+	public static GmailSender gmailSender;
+	public static GmailFetcher gmailFetcher;
 
 	public static void main(String[] args) throws IOException {
-		webSocket=new WebSocket();
-		webSocket.sendEmail();
+		gmailSender.sendEmail();
+
 	}
 
 

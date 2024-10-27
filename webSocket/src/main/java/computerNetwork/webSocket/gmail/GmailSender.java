@@ -1,4 +1,4 @@
-package computerNetwork.webSocket;
+package computerNetwork.webSocket.gmail;
 
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
 
-public class WebSocket {
+public class GmailSender {
     private BufferedReader inFromServer;
     private DataOutputStream outToServer;
 
