@@ -1,9 +1,9 @@
-# SMTP,IMAP를 활용한 이메일 통합 시스템
+# SMTP,IMAP을 활용한 이메일 통합 시스템
 ## 개요
-이 시스템은 사용자가 이메일을 보내고, 메일함을 열어 상위 메일을 확인할 수 있게 합니다. Google이나 Naver 플랫폼을 통해 SMTP를 사용하여 통합된 이메일 기능을 제공합니다.
+> 이 시스템은 사용자가 이메일을 보내고, 메일함을 열어 상위 메일을 확인할 수 있게 합니다. Google 이나 Naver플랫폼을 통해 **SMTP,IMAP**을 사용하여 통합된 이메일 기능을 제공합니다.
 
 ## 목표
-Application layer의 Sokcet을 이용해서 programming하면서, SMTP,IMAP의 규격을 익히고, TSL,SSL의 의미에 대해서 생각할 수 있습니다. 
+```Application layer```의 ```Sokcet```을 이용해서 programming하면서, SMTP,IMAP의 규격을 익히고, TSL,SSL의 의미에 대해서 생각할 수 있습니다. 
 
 ## 사용자 시나리오
 1. 사용자는 메일을 보낼지, 메일함을 열지를 선택합니다.
