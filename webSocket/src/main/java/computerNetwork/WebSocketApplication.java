@@ -9,10 +9,10 @@ import java.io.IOException;
 
 public class WebSocketApplication {
 	public static void main(String[] args) throws IOException {
-//	GmailFetcher gmailFetcher=new GmailFetcher();
-//	gmailFetcher.fetchMail();
-		GmailSender gmailSender=new GmailSender("mhg10181018@gmail.com","dkgoanypxohpizoi");
-		gmailSender.sendEmail("msw0909@naver.com","!!");
+	GmailFetcher gmailFetcher=new GmailFetcher();
+	gmailFetcher.fetchMail();
+//		GmailSender gmailSender=new GmailSender("mhg10181018@gmail.com","dkgoanypxohpizoi");
+//		gmailSender.sendEmail("msw0909@naver.com","!!");
 
 	}
 

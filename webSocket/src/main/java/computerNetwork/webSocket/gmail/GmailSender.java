@@ -25,7 +25,7 @@ public class GmailSender {
         // 일반 소켓을 사용해 Gmail SMTP 서버에 연결 (포트 587)
         Socket clientSocket = new Socket("smtp.gmail.com", 587);
         SSLSocket sslSocket = getTLSSocket(clientSocket);
-        getInitialResponse(inFromServer,clientSocket);
+        getInitialResponse(clientSocket);
         isConnectionWithServer();
         // STARTTLS 명령어 전송 (암호화된 통신 시작)
         startTLSConnection();
@@ -55,7 +55,7 @@ public class GmailSender {
         return (SSLSocket) sslSocketFactory.createSocket(clientSocket, "smtp.gmail.com", 587, true);
     }
 
-    private void getInitialResponse(BufferedReader inFromServer,Socket clientSocket) throws IOException {
+    private void getInitialResponse(Socket clientSocket) throws IOException {
         // 서버와 데이터를 주고받기 위한 입출력 스트림 설정
         inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
         outToServer = new DataOutputStream(clientSocket.getOutputStream());
@@ -97,7 +97,6 @@ public class GmailSender {
         System.out.println("Received: " + response);
 
         // Gmail 서버에서 334 응답으로 비밀번호를 요청할 때 Base64로 인코딩된 비밀번호 전송
-
         String base64EncodedPassword = java.util.Base64.getEncoder().encodeToString(gmailAppPassword.getBytes());
         outToServer.writeBytes(base64EncodedPassword + "\r\n");
         response = inFromServer.readLine();
