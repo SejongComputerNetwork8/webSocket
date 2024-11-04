@@ -1,6 +1,9 @@
 package computerNetwork.webSocket.javafx;
 
+import computerNetwork.webSocket.dto.FetchingInformation;
 import computerNetwork.webSocket.dto.UserInfo;
+import computerNetwork.webSocket.gmail.GmailFetcher;
+import computerNetwork.webSocket.naver.NaverFetcher;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -12,10 +15,14 @@ import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
 
 public class HomePage extends Application {
     private UserData userData; // UserData 인스턴스
     private static UserInfo userInfo;
+    private GmailFetcher gmailFetcher;
+    private NaverFetcher naverFetcher;
+
 
     public void start(Stage primaryStage) {
         // 홈 화면 생성
@@ -55,8 +62,6 @@ public class HomePage extends Application {
         // 로그인 회원가입 버튼
         Button loginButton = new Button("로그인");
         Button signupButton = new Button("회원가입");
-        
-
 
 
         // 로그인 버튼 이벤트
@@ -70,15 +75,24 @@ public class HomePage extends Application {
                 String email = usernameField.getText();
                 String password = passwordField.getText();
                 userData = new UserData(email, password); // 예시 로그인 정보
+                gmailFetcher=new GmailFetcher();
+                naverFetcher=new NaverFetcher();
                 userInfo = new UserInfo(userData.getEmail(), userData.getLoginInfo(), selectedSite); //user 정보 넘기기
+
                 if (selectedSite.equals("Google")) {
+                    List<FetchingInformation> fetchingInformations= naverFetcher.fetch(userData.getEmail(),userData.getLoginInfo());
+
                     //로그인 데이터
                     MailPage mailPage = new MailPage(userData);
-                    mailPage.start(primaryStage); // MailPage를 시작 구글과 통신하는 함수 호출 인자 email, password
+                    mailPage.start(fetchingInformations,primaryStage); // MailPage를 시작 구글과 통신하는 함수 호출 인자 email, password
+
                 } else if (selectedSite.equals("Naver")) {
+                    List<FetchingInformation> fetchingInformations= naverFetcher.fetch(userData.getEmail(),userData.getLoginInfo());
                     //로그인 데이터
                     MailPage mailPage = new MailPage(userData);
-                    mailPage.start(primaryStage); //  MailPage를 시작 구글과 통신하는 함수 호출 인자 email, password
+
+                    mailPage.start(fetchingInformations,primaryStage); //  MailPage를 시작 구글과 통신하는 함수 호출 인자 email, password
+
                 }
             } catch (Exception e) {
                 System.out.println("로그인 오류가 발생함");

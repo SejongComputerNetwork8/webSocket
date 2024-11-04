@@ -1,16 +1,20 @@
 package computerNetwork.webSocket.gmail;
 
+import computerNetwork.webSocket.dto.FetchingInformation;
+
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
+import java.util.List;
 
 public class GmailFetcher implements AutoCloseable { // try-with-resources 문을 사용하여 자원을 자동으로 해제하기 위해 AutoCloseable 인터페이스 구현
     private static final String IMAP_HOST = "imap.gmail.com"; // Gmail IMAP 서버 호스트명
     private static final int IMAP_PORT = 993; // IMAP 프로토콜 포트 (SSL/TLS가 적용된 993 포트)
     private static final int TIMEOUT_MILLISECONDS = 10000; // 타임아웃 10초로 설정
 
+    public static List<FetchingInformation> gmailFetchingInformations;
     private BufferedReader inFromServer; // 서버로부터 데이터를 읽기 위한 스트림 (문자 입력 스트림)
     private DataOutputStream outToServer; // 서버에 데이터를 전송하기 위한 스트림 (바이트 출력 스트림)
     private SSLSocket sslSocket; // SSL을 사용하는 소켓을 설정하여 보안 연결을 수행
@@ -295,5 +299,8 @@ public class GmailFetcher implements AutoCloseable { // try-with-resources 문�
             System.err.println("연결 종료 중 오류: " + e.getMessage());
             throw e;
         }
+    }
+    public static List<computerNetwork.webSocket.dto.FetchingInformation> getFetchingInfo(){
+        return gmailFetchingInformations;
     }
 }
