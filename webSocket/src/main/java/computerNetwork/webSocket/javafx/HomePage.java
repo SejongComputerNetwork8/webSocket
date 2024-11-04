@@ -78,10 +78,8 @@ public class HomePage extends Application {
                 gmailFetcher=new GmailFetcher();
                 naverFetcher=new NaverFetcher();
                 userInfo = new UserInfo(userData.getEmail(), userData.getLoginInfo(), selectedSite); //user 정보 넘기기
-
                 if (selectedSite.equals("Google")) {
-                    List<FetchingInformation> fetchingInformations= naverFetcher.fetch(userData.getEmail(),userData.getLoginInfo());
-
+                    List<FetchingInformation> fetchingInformations= gmailFetcher.fetch(userData.getEmail(),userData.getLoginInfo());
                     //로그인 데이터
                     MailPage mailPage = new MailPage(userData);
                     mailPage.start(fetchingInformations,primaryStage); // MailPage를 시작 구글과 통신하는 함수 호출 인자 email, password
@@ -90,9 +88,7 @@ public class HomePage extends Application {
                     List<FetchingInformation> fetchingInformations= naverFetcher.fetch(userData.getEmail(),userData.getLoginInfo());
                     //로그인 데이터
                     MailPage mailPage = new MailPage(userData);
-
                     mailPage.start(fetchingInformations,primaryStage); //  MailPage를 시작 구글과 통신하는 함수 호출 인자 email, password
-
                 }
             } catch (Exception e) {
                 System.out.println("로그인 오류가 발생함");

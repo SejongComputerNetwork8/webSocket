@@ -49,10 +49,8 @@ public class MailPage {
         // 좌측 사이드바 생성
         MailSidebar sidebar = new MailSidebar(primaryStage, this,fetchingInformations);
         mailboxRoot.setLeft(sidebar);
-
         // 메일 내용 표시 영역 (테이블)
         mailTable = new MailTable();
-
         // 더블 클릭 이벤트 처리
         mailTable.getTableView().setOnMouseClicked(event -> {
             if (event.getClickCount() == 2) {
@@ -70,7 +68,6 @@ public class MailPage {
         mailContentLayout.getChildren().addAll(currentMailboxLabel, mailTable.getTableView());
 
         mailboxRoot.setCenter(mailContentLayout); // 메일 내용 레이아웃을 중앙에 배치
-
 
         // 우측 상단에 검색어 입력 박스와 검색 버튼 추가
         searchField = new TextField();

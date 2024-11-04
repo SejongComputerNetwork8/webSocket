@@ -15,6 +15,9 @@ public class NaverFetcher implements AutoCloseable {
     private static final String IMAP_HOST = "imap.naver.com";
     private static final int IMAP_PORT = 993; // 네이버 imap 서버 포트 번호
     private static final int TIMEOUT_MILLISECONDS = 10000; // 타임아웃을 10초로 설정
+    String from=null;
+    String subject ="default";
+    String date=null;
 
     public static List<FetchingInformation> naverFetchingInformations;
 
@@ -30,6 +33,7 @@ public class NaverFetcher implements AutoCloseable {
         } finally {
             close();
         }
+        System.out.println("!!!!!!!!!!!!!!!!!!"+naverFetchingInformations);
         return naverFetchingInformations;
     }
 
@@ -79,7 +83,7 @@ public class NaverFetcher implements AutoCloseable {
         System.out.println("Sending: " + tag + " SELECT INBOX");
         sendCommand(tag + " SELECT INBOX"); // INBOX 선택 명령어 전송
         String response = readMultilineResponse();
-
+        naverFetchingInformations=new ArrayList<>();
         // 메일 총 개수 파악
         for(String line : response.split("\n")) {
             if(line.matches("\\* \\d+ EXISTS")) { // 메일 개수 정보를 포함한 줄 찾고
@@ -181,18 +185,22 @@ public class NaverFetcher implements AutoCloseable {
 
             if (isCollectingEmail) {
                 line = line.trim();
-                String from = "default";
-                String subject ="default";
-                String date;
+
+
+
+
                 if (line.startsWith("FROM: ")) {
                     from = decodeHeader(line.substring(6)); // from 부분 제거하고 발신자 이름 디코딩
                     // 이메일 주소 추출 (<> 안의 내용), 발신자 이름과 이메일 주소 구분
+
+
                     String emailAddress = "";
                     int startIndex = from.indexOf('<');
                     int endIndex = from.indexOf('>');
                     if (startIndex >= 0 && endIndex > startIndex) {
                         emailAddress = from.substring(startIndex + 1, endIndex);
                         from = from.substring(0, startIndex).trim();
+                        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+from);
                     }
                     currentEmail.append("보낸사람: ").append(from);
                     if (!emailAddress.isEmpty()) {
@@ -213,7 +221,8 @@ public class NaverFetcher implements AutoCloseable {
                         date = date.substring(0, date.length() - 5).trim(); /// kst 제거
                     }
                     currentEmail.append("날짜: ").append(date).append("\n");
-                    naverFetchingInformations=new ArrayList<>();
+
+
                     naverFetchingInformations.add(new FetchingInformation(from,date,subject));
                 }
             }
