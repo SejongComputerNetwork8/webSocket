@@ -14,14 +14,15 @@ public class GmailSender {
     private String gmailId;
     private String gmailAppPassword;
     private String receivedEmail;
+    private String subject;
     private String message;
     public GmailSender(String id,String password){
         this.gmailId=id;
         this.gmailAppPassword=password;
     }
 
-    public void sendEmail(String receivedEmail,String message) throws IOException {
-        setReceivendEmailAndMessage(receivedEmail, message);
+    public void sendEmail(String receivedEmail,String subject,String message) throws IOException {
+        setReceivendEmailAndMessage(receivedEmail,subject, message);
         // 일반 소켓을 사용해 Gmail SMTP 서버에 연결 (포트 587)
         Socket clientSocket = new Socket("smtp.gmail.com", 587);
         SSLSocket sslSocket = getTLSSocket(clientSocket);
@@ -42,8 +43,9 @@ public class GmailSender {
     }
 
 
-    private void setReceivendEmailAndMessage(String receivedEmail, String message) {
+    private void setReceivendEmailAndMessage(String receivedEmail,String subject, String message) {
         this.receivedEmail= receivedEmail;
+        this.subject = subject;
         this.message= message;
     }
 
@@ -125,7 +127,7 @@ public class GmailSender {
 
     private void sendEmailData() throws IOException {
         String response;
-        outToServer.writeBytes("Subject: Test Email\r\n");
+        outToServer.writeBytes("Subject: "+ subject +"\r\n");
         outToServer.writeBytes("To: "+receivedEmail+"\r\n");
         outToServer.writeBytes("From: "+gmailId+"\r\n");
         outToServer.writeBytes("\r\n");  // 헤더와 본문을 구분하는 빈 줄

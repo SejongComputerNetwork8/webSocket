@@ -97,7 +97,7 @@ public class WriteMail {
             if(info.platform()=="Google"){
                 GmailSender gs= new GmailSender(info.email(),info.password());
                 try {
-                    gs.sendEmail(email,content);
+                    gs.sendEmail(email, subject, content);
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
