@@ -1,5 +1,6 @@
 import java.io.Console;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public class UI implements AutoCloseable {
@@ -8,7 +9,8 @@ public class UI implements AutoCloseable {
     private static final String GOOGLE = "google";
 
     public UI() {
-        this.scanner = new Scanner(System.in);
+
+        this.scanner = new Scanner(System.in, StandardCharsets.UTF_8.name());
     }
 
     public void run() {
@@ -201,6 +203,12 @@ public class UI implements AutoCloseable {
         }
     }
 }
+
+// 이메일 자격 증명을 위한 레코드
+record EmailCredentials(String email, String password) {}
+
+// 이메일 내용을 위한 레코드
+record EmailContent(String recipient, String subject, String message) {}
 
 // 이메일 자격 증명을 위한 레코드
 record EmailCredentials(String email, String password) {}
