@@ -1,5 +1,9 @@
 package computerNetwork.webSocket.javafx;
 
+import computerNetwork.webSocket.dto.UserInfo;
+import computerNetwork.webSocket.gmail.GmailSender;
+import computerNetwork.webSocket.naver.NaverFetcher;
+import computerNetwork.webSocket.naver.NaverSender;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -10,16 +14,20 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+//import static computerNetwork.webSocket.javafx.HomePage.userInfo;
+
 public class WriteMail {
 
-    public void openComposeMailWindow(Stage owner, String recipient) {
+    public void openComposeMailWindow(UserInfo info, Stage owner, String recipient) {
         Stage composeStage = new Stage();
         composeStage.initModality(Modality.WINDOW_MODAL); // 부모 창이 활성화된 상태에서만 작동
         composeStage.initOwner(owner); // 부모 창 설정
         composeStage.setTitle("메일 쓰기");
+
 
         // 레이아웃 설정
         VBox layout = new VBox();
@@ -78,6 +86,22 @@ public class WriteMail {
             String email = emailField.getText();
             String subject = subjectField.getText();
             String content = contentArea.getText();
+            if(info.platform()=="Naver"){
+                NaverSender ns=new NaverSender();
+                try {
+                    ns.sendNaverEmail(info.email(),info.password(),email,subject,content);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+            if(info.platform()=="Google"){
+                GmailSender gs= new GmailSender(info.email(),info.password());
+                try {
+                    gs.sendEmail(email,content);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
             // 여기서 전송 로직을 추가하면 됩니다.
             System.out.println("보낼 메일 주소: " + email);
             System.out.println("제목: " + subject);

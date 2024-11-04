@@ -1,5 +1,6 @@
 package computerNetwork.webSocket.javafx;
 
+import computerNetwork.webSocket.dto.UserInfo;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -17,7 +18,7 @@ public class MailDetail {
         this.writeMail = writeMail; // WriteMail 인스턴스 초기화
     }
 
-    public void showMailDetails(Stage owner, String sender, String recipient, String subject) {
+    public void showMailDetails(UserInfo userInfo,Stage owner, String sender, String recipient, String subject) {
         Stage detailStage = new Stage();
         detailStage.initOwner(owner);
         detailStage.setTitle("메일 세부 정보");
@@ -37,7 +38,7 @@ public class MailDetail {
         // 답장하기 버튼
         Button replyButton = new Button("답장하기");
         replyButton.setOnAction(event -> {
-            writeMail.openComposeMailWindow(owner, sender); // 답장할 때 보낸이를 받는 사람으로 설정
+            writeMail.openComposeMailWindow(userInfo,owner, sender); // 답장할 때 보낸이를 받는 사람으로 설정
             // detailStage.close(); // 이 줄을 제거하여 창이 닫히지 않도록 합니다.
         });
 

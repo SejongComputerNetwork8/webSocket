@@ -1,6 +1,7 @@
 package computerNetwork.webSocket.javafx;
 
 import computerNetwork.webSocket.dto.FetchingInformation;
+import computerNetwork.webSocket.dto.UserInfo;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -11,7 +12,7 @@ import java.util.List;
 
 public class MailSidebar extends VBox {
 
-    public MailSidebar(Stage primaryStage, MailPage mailPage, List<FetchingInformation> fetchingInformations) {
+    public MailSidebar(UserInfo userInfo,Stage primaryStage, MailPage mailPage, List<FetchingInformation> fetchingInformations) {
 
 
 
@@ -26,7 +27,7 @@ public class MailSidebar extends VBox {
         // 버튼 클릭 이벤트 설정
         composeButton.setOnAction(event -> {
             WriteMail writeMail = new WriteMail(); // WriteMail 인스턴스 생성
-            writeMail.openComposeMailWindow(primaryStage, ""); // 메일 쓰기 창 열기, 기본적으로 받는 사람은 빈 문자열
+            writeMail.openComposeMailWindow(userInfo,primaryStage, ""); // 메일 쓰기 창 열기, 기본적으로 받는 사람은 빈 문자열
         });
 
         allMailsButton.setOnAction(event -> mailPage.loadAllMails(fetchingInformations));

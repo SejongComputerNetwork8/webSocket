@@ -42,12 +42,12 @@ public class MailPage {
         this.userEmail = userData.getEmail();
     }
 
-    public void start(List<FetchingInformation> fetchingInformations, Stage primaryStage) {
+    public void start(UserInfo userInfo,List<FetchingInformation> fetchingInformations, Stage primaryStage) {
         // 메일박스의 루트 레이아웃
         BorderPane mailboxRoot = new BorderPane();
 
         // 좌측 사이드바 생성
-        MailSidebar sidebar = new MailSidebar(primaryStage, this,fetchingInformations);
+        MailSidebar sidebar = new MailSidebar(userInfo,primaryStage, this,fetchingInformations);
         mailboxRoot.setLeft(sidebar);
         // 메일 내용 표시 영역 (테이블)
         mailTable = new MailTable();
@@ -56,7 +56,7 @@ public class MailPage {
             if (event.getClickCount() == 2) {
                 Mail selectedMail = mailTable.getSelectedMail(); // 선택된 메일 가져오기
                 if (selectedMail != null) {
-                    showMailDetails(selectedMail); // 세부 정보 표시
+                    showMailDetails(userInfo,selectedMail); // 세부 정보 표시
                 }
             }
         });
@@ -118,8 +118,9 @@ public class MailPage {
 
 
 
-    private void showMailDetails(Mail mail) {
+    private void showMailDetails(UserInfo userInfo,Mail mail) {
         mailDetail.showMailDetails(
+                userInfo,
                 (Stage) mailTable.getTableView().getScene().getWindow(),
                 mail.getSender(),
                 mail.getDate(),
