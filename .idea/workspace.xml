@@ -4,7 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="d8abfb8d-72e1-4470-9388-0a45b5f2dfd3" name="Changes" comment="" />
+=======
+    <list default="true" id="d8abfb8d-72e1-4470-9388-0a45b5f2dfd3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
+=======
+      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/computerNetworkAssignment.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/out/production/computerNetworkAssignment/EmailContent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/out/production/computerNetworkAssignment/EmailCredentials.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/out/production/computerNetworkAssignment/EmailSenderApp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/out/production/computerNetworkAssignment/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/out/production/computerNetworkAssignment/NaverMailbox.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/out/production/computerNetworkAssignment/NaverWebSocket.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/out/production/computerNetworkAssignment/UI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/out/production/computerNetworkAssignment/WebSocketApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/src/EmailSenderApp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/src/NaverMailbox.java" beforeDir="false" afterPath="$PROJECT_DIR$/webSocket/src/main/java/computerNetwork/webSocket/naver/NaverFetcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/src/NaverWebSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/webSocket/src/main/java/computerNetwork/webSocket/naver/NaverSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/src/UI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/src/WebSocketApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webSocket/src/main/java/computerNetwork/webSocket/WebSocketApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/webSocket/src/main/java/computerNetwork/webSocket/WebSocketApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webSocket/src/main/java/computerNetwork/webSocket/gmail/GmailMailbox.java" beforeDir="false" afterPath="$PROJECT_DIR$/webSocket/src/main/java/computerNetwork/webSocket/gmail/GmailFetcher.java" afterDir="false" />
+>>>>>>> e0ce8d3c6a7fef2d3075a85352c13088ea5c0de2
+    </list>
+>>>>>>> f3afad5d31bdb58f4f2f80a6817d8ab548e5ce47
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -64,9 +90,16 @@
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+<<<<<<< HEAD
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/javaFX",
+=======
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/CSJAVA/webSocket/webSocket/src/main/java/computerNetwork/webSocket/naver",
+>>>>>>> e0ce8d3c6a7fef2d3075a85352c13088ea5c0de2
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -75,11 +108,14 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+<<<<<<< HEAD
+=======
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\CSJAVA\webSocket\webSocket\src\main\java\computerNetwork\webSocket\naver" />
     </key>
   </component>
+>>>>>>> e0ce8d3c6a7fef2d3075a85352c13088ea5c0de2
   <component name="RunManager">
     <configuration name="WebSocketApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="computerNetwork.webSocket.WebSocketApplication" />
@@ -94,16 +130,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.WebSocketApplication" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-17.0.10-corretto-17.0.10-4caba194b151-5cd809f4" />
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23726.103" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23726.103" />
       </set>
     </attachedChunks>
   </component>
@@ -114,11 +146,23 @@
       <created>1730640747350</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
+<<<<<<< HEAD
+      <updated>1729928777838</updated>
+      <workItem from="1729928780310" duration="1119000" />
+      <workItem from="1730004919494" duration="5666000" />
+      <workItem from="1730017728900" duration="4399000" />
+      <workItem from="1730705647206" duration="47000" />
+=======
       <updated>1730640747350</updated>
       <workItem from="1730640751879" duration="951000" />
       <workItem from="1730692088533" duration="2540000" />
       <workItem from="1730705807215" duration="902000" />
+<<<<<<< HEAD
       <workItem from="1730706731394" duration="4095000" />
+=======
+      <workItem from="1730706731394" duration="1074000" />
+>>>>>>> e0ce8d3c6a7fef2d3075a85352c13088ea5c0de2
+>>>>>>> f3afad5d31bdb58f4f2f80a6817d8ab548e5ce47
     </task>
     <servers />
   </component>
