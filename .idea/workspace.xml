@@ -6,23 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d8abfb8d-72e1-4470-9388-0a45b5f2dfd3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/computerNetworkAssignment.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/out/production/computerNetworkAssignment/EmailContent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/out/production/computerNetworkAssignment/EmailCredentials.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/out/production/computerNetworkAssignment/EmailSenderApp.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/out/production/computerNetworkAssignment/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/out/production/computerNetworkAssignment/NaverMailbox.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/out/production/computerNetworkAssignment/NaverWebSocket.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/out/production/computerNetworkAssignment/UI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/out/production/computerNetworkAssignment/WebSocketApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/src/EmailSenderApp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/src/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/src/NaverMailbox.java" beforeDir="false" afterPath="$PROJECT_DIR$/webSocket/src/main/java/computerNetwork/webSocket/naver/NaverFetcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/src/NaverWebSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/webSocket/src/main/java/computerNetwork/webSocket/naver/NaverSender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/src/UI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/src/WebSocketApplication.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/webSocket/src/main/java/computerNetwork/webSocket/WebSocketApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/webSocket/src/main/java/computerNetwork/webSocket/WebSocketApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webSocket/src/main/java/computerNetwork/webSocket/gmail/GmailMailbox.java" beforeDir="false" afterPath="$PROJECT_DIR$/webSocket/src/main/java/computerNetwork/webSocket/gmail/GmailFetcher.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +35,14 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Record" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -68,7 +60,11 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
     "Gradle.webSocket [:WebSocketApplication.main()].executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
@@ -125,7 +121,7 @@
       <workItem from="1730640751879" duration="951000" />
       <workItem from="1730692088533" duration="2540000" />
       <workItem from="1730705807215" duration="902000" />
-      <workItem from="1730706731394" duration="1074000" />
+      <workItem from="1730706731394" duration="3399000" />
     </task>
     <servers />
   </component>
