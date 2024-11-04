@@ -1,5 +1,6 @@
 package computerNetwork.webSocket.javafx;
 
+import computerNetwork.webSocket.dto.UserInfo;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -14,7 +15,7 @@ import java.net.URISyntaxException;
 
 public class HomePage extends Application {
     private UserData userData; // UserData 인스턴스
-
+    private static UserInfo userInfo;
 
     public void start(Stage primaryStage) {
         // 홈 화면 생성
@@ -69,6 +70,7 @@ public class HomePage extends Application {
                 String email = usernameField.getText();
                 String password = passwordField.getText();
                 userData = new UserData(email, password); // 예시 로그인 정보
+                userInfo = new UserInfo(userData.getEmail(), userData.getLoginInfo(), selectedSite); //user 정보 넘기기
                 if (selectedSite.equals("Google")) {
                     //로그인 데이터
                     MailPage mailPage = new MailPage(userData);
@@ -104,5 +106,8 @@ public class HomePage extends Application {
         // 홈 화면에 요소 추가
         homeBox.getChildren().addAll(usernameField, passwordField, googleButton, naverButton, loginButton, signupButton);
         return homeBox;
+    }
+    public static Record getUserInfo(){
+        return userInfo;
     }
 }

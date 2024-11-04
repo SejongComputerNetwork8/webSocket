@@ -9,6 +9,9 @@ import javafx.stage.Stage;
 public class MailSidebar extends VBox {
 
     public MailSidebar(Stage primaryStage, MailPage mailPage) {
+
+
+
         setPadding(new Insets(10));
         setSpacing(10);
         setStyle("-fx-background-color: #f0f0f0;");
