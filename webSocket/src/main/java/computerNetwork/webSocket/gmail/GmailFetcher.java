@@ -6,7 +6,7 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
-public class GmailMailbox implements AutoCloseable { // try-with-resources 문을 사용하여 자원을 자동으로 해제하기 위해 AutoCloseable 인터페이스 구현
+public class GmailFetcher implements AutoCloseable { // try-with-resources 문을 사용하여 자원을 자동으로 해제하기 위해 AutoCloseable 인터페이스 구현
     private static final String IMAP_HOST = "imap.gmail.com"; // Gmail IMAP 서버 호스트명
     private static final int IMAP_PORT = 993; // IMAP 프로토콜 포트 (SSL/TLS가 적용된 993 포트)
     private static final int TIMEOUT_MILLISECONDS = 10000; // 타임아웃 10초로 설정
