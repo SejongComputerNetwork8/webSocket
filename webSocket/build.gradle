@@ -1,28 +1,31 @@
 plugins {
-	id 'java'
-	id 'org.springframework.boot' version '3.3.4'
-	id 'io.spring.dependency-management' version '1.1.6'
+	id 'org.springframework.boot' version '3.1.0'
+	id 'io.spring.dependency-management' version '1.1.0'
+	id 'application'
+	id 'org.openjfx.javafxplugin' version '0.0.13' // JavaFX 플러그인 추가
 }
-group = 'computerNetwork'
-version = '0.0.1-SNAPSHOT'
 
-java {
-	toolchain {
-		languageVersion = JavaLanguageVersion.of(17)
-	}
-}
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17' // Java 버전에 맞게 설정
 
 repositories {
 	mavenCentral()
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	implementation 'org.springframework.boot:spring-boot-starter'
 
+	// JavaFX 종속성 추가
+	implementation 'org.openjfx:javafx-controls:20'
+	implementation 'org.openjfx:javafx-fxml:20'
 }
 
-tasks.named('test') {
-	useJUnitPlatform()
+javafx {
+	version = "20" // JavaFX 버전 설정
+	modules = [ 'javafx.controls', 'javafx.fxml' ] // 필요한 모듈 지정
+}
+
+application {
+	mainClass = 'com.example.MainApplication' // 메인 클래스 경로 지정
 }
