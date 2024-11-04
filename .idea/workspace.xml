@@ -5,13 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8abfb8d-72e1-4470-9388-0a45b5f2dfd3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/webSocket/src/main/java/computerNetwork/webSocket/gmail/GmailMailbox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webSocket/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/webSocket/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webSocket/src/main/java/computerNetwork/WebSocketApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/webSocket/src/main/java/computerNetwork/webSocket/WebSocketApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webSocket/src/main/java/computerNetwork/webSocket/gmail/GmailFetcher.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/computerNetworkAssignment.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/out/production/computerNetworkAssignment/EmailContent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/out/production/computerNetworkAssignment/EmailCredentials.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/out/production/computerNetworkAssignment/EmailSenderApp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/out/production/computerNetworkAssignment/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/out/production/computerNetworkAssignment/NaverMailbox.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/out/production/computerNetworkAssignment/NaverWebSocket.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/out/production/computerNetworkAssignment/UI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/out/production/computerNetworkAssignment/WebSocketApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/src/EmailSenderApp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/src/NaverMailbox.java" beforeDir="false" afterPath="$PROJECT_DIR$/webSocket/src/main/java/computerNetwork/webSocket/naver/NaverFetcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/src/NaverWebSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/webSocket/src/main/java/computerNetwork/webSocket/naver/NaverSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/src/UI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computerNetworkAssignment/src/WebSocketApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webSocket/src/main/java/computerNetwork/webSocket/WebSocketApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/webSocket/src/main/java/computerNetwork/webSocket/WebSocketApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webSocket/src/main/java/computerNetwork/webSocket/gmail/GmailMailbox.java" beforeDir="false" afterPath="$PROJECT_DIR$/webSocket/src/main/java/computerNetwork/webSocket/gmail/GmailFetcher.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,21 +66,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.webSocket [:WebSocketApplication.main()].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.webSocket [:WebSocketApplication.main()].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/CSJAVA/webSocket/webSocket/src/main/java/computerNetwork/webSocket/naver",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\CSJAVA\webSocket\webSocket\src\main\java\computerNetwork\webSocket\naver" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="WebSocketApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="computerNetwork.webSocket.WebSocketApplication" />
@@ -106,7 +123,9 @@
       <option name="presentableId" value="Default" />
       <updated>1730640747350</updated>
       <workItem from="1730640751879" duration="951000" />
-      <workItem from="1730692088533" duration="1747000" />
+      <workItem from="1730692088533" duration="2540000" />
+      <workItem from="1730705807215" duration="902000" />
+      <workItem from="1730706731394" duration="1074000" />
     </task>
     <servers />
   </component>
