@@ -6,6 +6,8 @@ import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Base64;
 import java.util.List;
 
@@ -14,12 +16,15 @@ public class GmailFetcher implements AutoCloseable { // try-with-resources 문�
     private static final int IMAP_PORT = 993; // IMAP 프로토콜 포트 (SSL/TLS가 적용된 993 포트)
     private static final int TIMEOUT_MILLISECONDS = 10000; // 타임아웃 10초로 설정
 
+    private String from=null;
+    private String date=null;
+    private String subject=null;
     public static List<FetchingInformation> gmailFetchingInformations;
     private BufferedReader inFromServer; // 서버로부터 데이터를 읽기 위한 스트림 (문자 입력 스트림)
     private DataOutputStream outToServer; // 서버에 데이터를 전송하기 위한 스트림 (바이트 출력 스트림)
     private SSLSocket sslSocket; // SSL을 사용하는 소켓을 설정하여 보안 연결을 수행
 
-    public void checkEmails(String email, String password) throws IOException {
+    public List<FetchingInformation> fetch(String email, String password) throws IOException {
         // 이메일 확인을 위한 메서드, 전체 과정을 try-finally로 감싸 자원 해제 보장
         try {
             initializeConnection(); // 서버 연결 초기화
@@ -28,6 +33,7 @@ public class GmailFetcher implements AutoCloseable { // try-with-resources 문�
         } finally {
             close(); // 연결 종료
         }
+        return gmailFetchingInformations;
     }
 
     private void initializeConnection() throws IOException {
@@ -80,6 +86,7 @@ public class GmailFetcher implements AutoCloseable { // try-with-resources 문�
         System.out.println("Sending: " + tag + " SELECT INBOX");
         sendCommand(tag + " SELECT INBOX"); // 받은 편지함 선택
         String response = readMultilineResponse();
+        gmailFetchingInformations=new ArrayList<>();
 
         // 받은 편지함 내 메일 개수 확인
         for (String line : response.split("\n")) {
@@ -167,9 +174,9 @@ public class GmailFetcher implements AutoCloseable { // try-with-resources 문�
             emailCount++;
 
             // 각 이메일의 헤더 정보를 추출
-            String from = extractHeaderValue(entry, "From: ");
-            String subject = extractHeaderValue(entry, "Subject: ");
-            String date = extractHeaderValue(entry, "Date: ");
+          from=extractHeaderValue(entry, "From: ");
+          subject = extractHeaderValue(entry, "Subject: ");
+          date = extractHeaderValue(entry, "Date: ");
 
             if (!from.isEmpty()) {
                 emailContent.append("보낸사람: ").append(decodeHeader(from)).append("\n");
@@ -180,6 +187,7 @@ public class GmailFetcher implements AutoCloseable { // try-with-resources 문�
             if (!date.isEmpty()) {
                 emailContent.append("날짜: ").append(date).append("\n");
             }
+            gmailFetchingInformations.add(new FetchingInformation(decodeHeader(from),date,decodeHeader(subject)));
 
             printEmail(emailCount, emailContent.toString());
         }

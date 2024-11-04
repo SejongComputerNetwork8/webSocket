@@ -47,6 +47,7 @@ public class Mail {
     public static ObservableList<Mail> generateSampleMails(List<FetchingInformation> fetchingInformations) {
         // fetchingInformations 리스트를 순회하며 Mail 객체 생성
         ObservableList<Mail> mails = FXCollections.observableArrayList();
+        System.out.println("!!!!"+fetchingInformations);
 
         for (FetchingInformation info : fetchingInformations) {
             // FetchingInformation 객체에서 이메일 발신자, 날짜, 내용을 추출
