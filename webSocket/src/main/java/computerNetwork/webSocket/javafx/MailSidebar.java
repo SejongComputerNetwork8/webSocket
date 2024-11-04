@@ -1,14 +1,17 @@
 package computerNetwork.webSocket.javafx;
 
+import computerNetwork.webSocket.dto.FetchingInformation;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.util.List;
+
 public class MailSidebar extends VBox {
 
-    public MailSidebar(Stage primaryStage, MailPage mailPage) {
+    public MailSidebar(Stage primaryStage, MailPage mailPage, List<FetchingInformation> fetchingInformations) {
 
 
 
@@ -26,7 +29,7 @@ public class MailSidebar extends VBox {
             writeMail.openComposeMailWindow(primaryStage, ""); // 메일 쓰기 창 열기, 기본적으로 받는 사람은 빈 문자열
         });
 
-        allMailsButton.setOnAction(event -> mailPage.loadAllMails());
+        allMailsButton.setOnAction(event -> mailPage.loadAllMails(fetchingInformations));
 
         // 버튼을 사이드바에 추가
         getChildren().addAll(composeButton, allMailsButton);

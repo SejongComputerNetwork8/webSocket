@@ -1,9 +1,12 @@
 package computerNetwork.webSocket.javafx;
 
+import computerNetwork.webSocket.dto.FetchingInformation;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
+import java.util.List;
 
 public class Mail {
     private final StringProperty sender; // 보낸 사람
@@ -41,18 +44,20 @@ public class Mail {
     }
 
     // 30개의 메일 예시를 생성하는 정적 메서드
-    public static ObservableList<Mail> generateSampleMails() {
-        return FXCollections.observableArrayList(
-                new Mail("alice@example.com", "2023-01-01", "안녕하세요1!"),
-                new Mail("alice@example.com", "2023-01-02", "안녕하세요2!"),
-                new Mail("alice@example.com", "2023-01-03", "안녕하세요3!"),
-                new Mail("alice@example.com", "2023-01-04", "안녕하세요4!"),
-                new Mail("alice@example.com", "2023-01-05", "안녕하세요5!"),
-                new Mail("bob@example.com", "2023-01-06", "회의 일정입니다."),
-                new Mail("charlie@example.com", "2023-01-07", "프로젝트 업데이트"),
-                new Mail("diana@example.com", "2023-01-08", "할 일 목록"),
-                new Mail("eve@example.com", "2023-01-09", "새로운 메시지"),
-                new Mail("frank@example.com", "2023-01-10", "업데이트 알림")
-        );
+    public static ObservableList<Mail> generateSampleMails(List<FetchingInformation> fetchingInformations) {
+        // fetchingInformations 리스트를 순회하며 Mail 객체 생성
+        ObservableList<Mail> mails = FXCollections.observableArrayList();
+
+        for (FetchingInformation info : fetchingInformations) {
+            // FetchingInformation 객체에서 이메일 발신자, 날짜, 내용을 추출
+            String sender = info.sendingPerson(); // 예: 발신자
+            String date = info.date();     // 예: 날짜
+            String content = info.title(); // 예: 내용
+
+            // Mail 객체 생성 후 리스트에 추가
+            mails.add(new Mail(sender, date, content));
+        }
+
+        return mails;
     }
 }

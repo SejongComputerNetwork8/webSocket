@@ -1,10 +1,14 @@
 package computerNetwork.webSocket.naver;
 
+import computerNetwork.webSocket.dto.FetchingInformation;
+
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Base64;
+import java.util.List;
 
 public class NaverFetcher implements AutoCloseable {
     // try-with-resources 문에서 자동으로 자원을 해제 가능하게
@@ -12,11 +16,13 @@ public class NaverFetcher implements AutoCloseable {
     private static final int IMAP_PORT = 993; // 네이버 imap 서버 포트 번호
     private static final int TIMEOUT_MILLISECONDS = 10000; // 타임아웃을 10초로 설정
 
+    public static List<FetchingInformation> naverFetchingInformations;
+
     private BufferedReader inFromServer; // 서버로부터 데이터를 읽어오는 스트림
     private DataOutputStream outToServer; // 데이터를 보내는 스트림 (바이트 형식)
     private SSLSocket sslSocket;
 
-    public void send(String email, String password) throws IOException {
+    public List<FetchingInformation> fetch(String email, String password) throws IOException {
         try {
             initializeConnection(); // 서버 연결 초기화하고
             login(email, password); // 로그인
@@ -24,6 +30,7 @@ public class NaverFetcher implements AutoCloseable {
         } finally {
             close();
         }
+        return naverFetchingInformations;
     }
 
     private void initializeConnection() throws IOException {
@@ -174,8 +181,11 @@ public class NaverFetcher implements AutoCloseable {
 
             if (isCollectingEmail) {
                 line = line.trim();
+                String from = "default";
+                String subject ="default";
+                String date;
                 if (line.startsWith("FROM: ")) {
-                    String from = decodeHeader(line.substring(6)); // from 부분 제거하고 발신자 이름 디코딩
+                    from = decodeHeader(line.substring(6)); // from 부분 제거하고 발신자 이름 디코딩
                     // 이메일 주소 추출 (<> 안의 내용), 발신자 이름과 이메일 주소 구분
                     String emailAddress = "";
                     int startIndex = from.indexOf('<');
@@ -190,7 +200,7 @@ public class NaverFetcher implements AutoCloseable {
                     }
                     currentEmail.append("\n");
                 } else if (line.startsWith("SUBJECT: ")) {
-                    String subject = decodeHeader(line.substring(9)); // subject 제거하고 제목 디코딩
+                    subject= decodeHeader(line.substring(9)); // subject 제거하고 제목 디코딩
                     if (!subject.trim().isEmpty()) {
                         currentEmail.append("제목: ").append(subject).append("\n");
                     } else {
@@ -198,11 +208,13 @@ public class NaverFetcher implements AutoCloseable {
                     }
                 } else if (line.startsWith("DATE: ")) {
                     // 날짜 형식 정리
-                    String date = line.substring(6).trim();// date 제거
+                     date = line.substring(6).trim();// date 제거
                     if (date.endsWith("(KST)")) {
                         date = date.substring(0, date.length() - 5).trim(); /// kst 제거
                     }
                     currentEmail.append("날짜: ").append(date).append("\n");
+                    naverFetchingInformations=new ArrayList<>();
+                    naverFetchingInformations.add(new FetchingInformation(from,date,subject));
                 }
             }
         }
@@ -353,5 +365,8 @@ public class NaverFetcher implements AutoCloseable {
             System.err.println("연결 종료 중 오류: " + e.getMessage());
             throw e;
         }
+    }
+    public static List<FetchingInformation> getFetchingInfo(){
+        return naverFetchingInformations;
     }
 }

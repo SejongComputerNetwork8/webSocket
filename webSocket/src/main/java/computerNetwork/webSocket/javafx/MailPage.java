@@ -1,5 +1,7 @@
 package computerNetwork.webSocket.javafx;
 
+import computerNetwork.webSocket.dto.FetchingInformation;
+import computerNetwork.webSocket.dto.UserInfo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -40,12 +42,12 @@ public class MailPage {
         this.userEmail = userData.getEmail();
     }
 
-    public void start(Stage primaryStage) {
+    public void start(List<FetchingInformation> fetchingInformations, Stage primaryStage) {
         // 메일박스의 루트 레이아웃
         BorderPane mailboxRoot = new BorderPane();
 
         // 좌측 사이드바 생성
-        MailSidebar sidebar = new MailSidebar(primaryStage, this);
+        MailSidebar sidebar = new MailSidebar(primaryStage, this,fetchingInformations);
         mailboxRoot.setLeft(sidebar);
 
         // 메일 내용 표시 영역 (테이블)
@@ -92,7 +94,7 @@ public class MailPage {
         primaryStage.setScene(mailboxScene);
 
         // 기본적으로 전체 메일함 선택 후 메일 리스트 로드
-        loadAllMails();
+        loadAllMails(fetchingInformations);
     }
 
     public void updateMailTable() {
@@ -105,12 +107,12 @@ public class MailPage {
         System.out.println("페이지 " + (currentPage + 1) + " 로드");
     }
 
-    public void loadAllMails() {
+    public void loadAllMails(List<FetchingInformation> fetchingInformations) {
         currentMailboxLabel.setText("현재 메일함: 전체 메일함");
         currentMailbox = "전체"; // 현재 메일함 상태 설정
 
         // Mail 클래스에서 생성한 30개의 메일 예시를 가져옵니다.
-        allMails = Mail.generateSampleMails(); // ObservableList로 설정됨
+        allMails = Mail.generateSampleMails(fetchingInformations); // ObservableList로 설정됨
 
         // 페이지 초기화
         currentPage = 0;
