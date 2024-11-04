@@ -14,7 +14,17 @@ repositories {
 }
 
 dependencies {
+<<<<<<< HEAD
 	implementation 'org.springframework.boot:spring-boot-starter'
+=======
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	implementation 'javax.websocket:javax.websocket-api:1.1'
+	implementation 'com.sun.mail:javax.mail:1.6.2'
+	implementation 'org.jsoup:jsoup:1.14.3' // 버전은 최신 버전으로 조정할 수 있습니다.
+
+>>>>>>> e0ce8d3c6a7fef2d3075a85352c13088ea5c0de2
 
 	// JavaFX 종속성 추가
 	implementation 'org.openjfx:javafx-controls:20'
