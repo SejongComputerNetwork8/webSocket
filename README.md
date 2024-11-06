@@ -1,10 +1,11 @@
 # SMTP,IMAP을 활용한 이메일 통합 시스템 + 네이버 메일 기능 추가 버전(ui 및 애플리케이션은 따로 구현됨)
 ## 팀원
 
-| [문한결](https://github.com/Munhangyeol)         | 조성준        | [채승현](https://github.com/cooky122)      | [김선웅](https://github.com/kolom1234)      | [김민재](https://github.com/min1231)       | [김민우](https://github.com/minuda1225)     |
-|--------------------------------------------------|---------------|--------------------------------------------|---------------------------------------------|---------------------------------------------|---------------------------------------------|
-| <p align="center"><img src="https://github.com/Munhangyeol.png" width="100"></p> | <p align="center">-</p> | <p align="center"><img src="https://github.com/cooky122.png" width="100"></p> | <p align="center"><img src="https://github.com/kolom1234.png" width="100"></p> | <p align="center"><img src="https://github.com/min1231.png" width="100"></p> | <p align="center"><img src="https://github.com/minuda1225.png" width="100"></p> |
-| **Team Leader  <br>Gmail Backend**               | **Gmail Backend** | **NaverMail Backend**                      | **NaverMail Backend**                        | **JavaFX Frontend**                        | **JavaFX Frontend**                        |
+| [문한결](https://github.com/Munhangyeol)         | 조성준                          | [채승현](https://github.com/cooky122)       | [김선웅](https://github.com/kolom1234)      | [김민재](https://github.com/min1231)       | [김민우](https://github.com/minuda1225)     |
+|--------------------------------------------------|---------------------------------|---------------------------------------------|---------------------------------------------|---------------------------------------------|---------------------------------------------|
+| <div align="center"><img src="https://github.com/Munhangyeol.png" width="100"></div> | <div align="center">-</div> | <div align="center"><img src="https://github.com/cooky122.png" width="100"></div> | <div align="center"><img src="https://github.com/kolom1234.png" width="100"></div> | <div align="center"><img src="https://github.com/min1231.png" width="100"></div> | <div align="center"><img src="https://github.com/minuda1225.png" width="100"></div> |
+| **Team Leader**<br>**Gmail Backend**                 | **Gmail Backend**               | **NaverMail Backend**                       | **NaverMail Backend**                       | **JavaFX Frontend**                        | **JavaFX Frontend**                        |
+
 
 
 
