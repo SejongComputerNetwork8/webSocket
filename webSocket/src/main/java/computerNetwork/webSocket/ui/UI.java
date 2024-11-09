@@ -31,7 +31,7 @@ public class UI {
 
         //TODO: 받은 정보를 통해서 websocket program 구현
         GmailSender gmailSender=new GmailSender(email,password);
-        gmailSender.sendEmail("msw0909@naver.com","mailmail");
+        gmailSender.sendEmail("msw0909@naver.com","this is subject","mailmail");
 
     }
 }
